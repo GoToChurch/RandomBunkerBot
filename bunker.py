@@ -1,6 +1,6 @@
 import random
 
-n = int(input()) # Number of players
+#n = int(input()) Number of players
 
 profs, illness, hobbies, qualities, phobias, dopinfa, packages, katast = [], [], [], [], [], [], [], []
 illness_exceptions = [
