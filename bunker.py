@@ -150,6 +150,3 @@ def writer(n):
                     dop_specs.append(player_specs)
                     card.write(player_specs)
                 t += 1
-
-filler(n)
-writer(n)
