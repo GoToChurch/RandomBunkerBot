@@ -33,7 +33,7 @@ lists = [
 def filler(n):
     ''' Заполняет списки характеристик из файлов. '''
     for i in range(len(charachers)):
-        with open('{}.txt'.format(charachers[i]), 'r', encoding = "utf-8") as file:
+        with open('{}.txt'.format(charachers[i]), 'r', encoding='utf-8') as file:
             for line in file:
                 line = line.strip()
                 lists[i].append(line)
@@ -42,7 +42,7 @@ def create_catastrophe():
     '''Создает катастофу'''
     return 'Катастрофа: ' + random.choice(katast) + '\n'
 
-def create_bunker():
+def create_bunker(n):
     '''Создает характеристики бункера'''
     bunker_chels = 'Вместимость бункера - ' + str(int(n/2)) + ' чел.' + '\n'
     bunker_square = 'Площадь бункера - ' + str(random.randrange(50,300, 50)) + ' м2' + '\n'
@@ -57,7 +57,7 @@ def create_bunker():
             bunker_dops +=  x + '\n' 
     return [bunker_chels, bunker_square, bunker_time, bunker_state, bunker_food, bunker_dops, bunker_guests]
 
-def create_player_card():
+def create_player_card(n):
     '''Создает карточки игроков'''
     players_age = random.randint(18,97)
     players_height = random.randint(150,200)
@@ -109,9 +109,9 @@ def create_player_card():
 def writer(n):
     '''Записывает информацию об игре в файлы'''
     kat = create_catastrophe()
-    bunker = create_bunker()
+    bunker = create_bunker(n)
     for i in range(1, n+1):
-        player = create_player_card()
+        player = create_player_card(n)
         with open(f'player_{i}.txt', 'w') as card:
             card.write(kat)
             card.write('\n')

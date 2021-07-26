@@ -36,11 +36,8 @@ def help_command(message):
     
 @bot.message_handler(commands=['rules'])
 def rules_command(message):
-    with open('rules.txt', 'r', encoding = "utf-8") as file:
-        text = file.read()
-        bot.send_message(
-            message.chat.id, file
-            )
+    with open('rules.txt', 'r', encoding='utf-8') as doc:
+        bot.send_document(message.chat.id, doc)
         
 @bot.message_handler(commands=['newgame'])
 def newgame_command(message):
@@ -76,6 +73,6 @@ def newgame_command(message):
         bunker.filler(players)
         bunker.writer(players)
         for i in range(1, players+1):
-            with open(f'player_{i}.txt', 'rb') as doc:
-                bot.send_document(chat_id, doc)
+            with open(f'player_{i}.txt', 'r') as doc:
+                bot.send_document(message.chat.id, doc)
 bot.polling(none_stop=True)
