@@ -41,7 +41,7 @@ def create_catastrophe():
     '''Создает катастофу'''
     catastrophe = random.choice(katast)
     with open('catastrophe.json', encoding='utf-8') as f:
-        text = json.loads(f)
+        text = json.load(f)
         return 'Катастрофа: ' + catastrophe + '\n' + text[catastrophe] + '\n'
 
 def create_bunker(n):
