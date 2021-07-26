@@ -1,6 +1,5 @@
 import random
-
-#n = int(input()) Number of players
+import json
 
 profs, illness, hobbies, qualities, phobias, dopinfa, packages, katast = [], [], [], [], [], [], [], []
 illness_exceptions = [
@@ -40,7 +39,10 @@ def filler(n):
 
 def create_catastrophe():
     '''Создает катастофу'''
-    return 'Катастрофа: ' + random.choice(katast) + '\n'
+    catastrophe = random.choice(katast)
+    with open('catastrophe.json', encoding='utf-8') as f:
+        text = json.loads(f)
+        return 'Катастрофа: ' + catastrophe + '\n' + text[catastrophe] + '\n'
 
 def create_bunker(n):
     '''Создает характеристики бункера'''
