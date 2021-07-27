@@ -15,8 +15,7 @@ bot = telebot.TeleBot(settings.TOKEN)
 def start_command(message):
     bot.send_message(
         message.chat.id,
-        'Hello and welcome to the bunker.\nTo start new game press /newgame.\n \
-        To get help press /help.'
+        'Добро пожаловать в бункер.'
         )
     
 @bot.message_handler(commands=['help'])
@@ -29,8 +28,8 @@ def help_command(message):
     )
     bot.send_message(
         message.chat.id,
-        "1) To start new game press /newgame.\n \
-         2) To see the game's rules press /rules",
+        "1) Чтобы начать новую игру нажмите /newgame.\n" +
+        "2) Чтобы посмотреть правила игры нажмите /rules",
         reply_markup=keyboard
         )
     
@@ -56,7 +55,7 @@ def newgame_command(message):
     )
     bot.send_message(  
         message.chat.id,   
-        'How many players will participate:',  
+        'Сколько человек будет принимать участие в игре:',  
         reply_markup=keyboard
         )
     @bot.callback_query_handler(func=lambda call: True)  
